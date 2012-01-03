@@ -67,7 +67,8 @@
 }
 
 - (UIImage *)icon {
-  return [UIImage imageNamed:@"link2.png"];
+  return [super icon];
+  //return [UIImage imageNamed:@"link2.png"];
 }
 
 - (void)populateActions { 
