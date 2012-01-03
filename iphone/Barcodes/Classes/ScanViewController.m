@@ -98,7 +98,7 @@
 	static NSString *BodyIdentifier = @"ScanViewBodyIdentifier";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BodyIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, BODY_HEIGHT) reuseIdentifier:BodyIdentifier] autorelease];
+		cell = [[[UITableViewCell alloc] initWithFrame: CGRectMake(0, 0, 320, BODY_HEIGHT) reuseIdentifier:BodyIdentifier] autorelease];
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectInset(cell.contentView.bounds, 6, 6)];
     textView.font = bodyFont;
     [textView setTag:TEXT_VIEW_TAG];

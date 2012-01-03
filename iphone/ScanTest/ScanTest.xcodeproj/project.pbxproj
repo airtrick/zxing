@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,9 @@
 		3BCED5C8120F84C900131FA0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCED5C7120F84C900131FA0 /* AVFoundation.framework */; };
 		3BCED5CE120F84E000131FA0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCED5CD120F84E000131FA0 /* CoreVideo.framework */; };
 		3BCED5EB120F885C00131FA0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCED5EA120F885C00131FA0 /* CoreMedia.framework */; };
+		D8FE2F0614A46D92008B0E34 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FE2F0514A46D92008B0E34 /* test.png */; };
+		D8FE2F0814A46EA4008B0E34 /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FE2F0714A46EA4008B0E34 /* test2.png */; };
+		D8FE2F0A14A46F91008B0E34 /* test3.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FE2F0914A46F91008B0E34 /* test3.png */; };
 		E5345BF11198D81A000CB77F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5345BF01198D81A000CB77F /* AudioToolbox.framework */; };
 		E548755C119C62B9001CC0F8 /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E548755B119C62B9001CC0F8 /* beep-beep.aiff */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		3BCED5CD120F84E000131FA0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3BCED5EA120F885C00131FA0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* ScanTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ScanTest-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D8FE2F0514A46D92008B0E34 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = ../../../../Desktop/test.png; sourceTree = "<group>"; };
+		D8FE2F0714A46EA4008B0E34 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test2.png; path = ../../../../Desktop/test2.png; sourceTree = "<group>"; };
+		D8FE2F0914A46F91008B0E34 /* test3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test3.png; path = ../../../../Desktop/test3.png; sourceTree = "<group>"; };
 		E5345BF01198D81A000CB77F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E5345FD6119B27D2000CB77F /* libZXingWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libZXingWidget.a; path = "build/Debug-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
 		E548755B119C62B9001CC0F8 /* beep-beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "beep-beep.aiff"; sourceTree = "<group>"; };
@@ -146,6 +152,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8FE2F0914A46F91008B0E34 /* test3.png */,
+				D8FE2F0714A46EA4008B0E34 /* test2.png */,
+				D8FE2F0514A46D92008B0E34 /* test.png */,
 				E548755B119C62B9001CC0F8 /* beep-beep.aiff */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -195,8 +204,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ScanTest" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -239,6 +251,9 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				E548755C119C62B9001CC0F8 /* beep-beep.aiff in Resources */,
+				D8FE2F0614A46D92008B0E34 /* test.png in Resources */,
+				D8FE2F0814A46EA4008B0E34 /* test2.png in Resources */,
+				D8FE2F0A14A46F91008B0E34 /* test3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,8 +336,7 @@
 					"../ZXingWidget/Classes/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos;
 				WARNING_CFLAGS = (
 					"-Werror",
 					"-Wall",
@@ -347,8 +361,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos;
 				WARNING_CFLAGS = (
 					"-Werror",
 					"-Wall",

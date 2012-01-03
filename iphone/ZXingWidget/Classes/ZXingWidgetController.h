@@ -55,6 +55,8 @@
 @property (nonatomic, retain) AVCaptureSession *captureSession;
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *prevLayer;
 #endif
+@property (nonatomic, assign) BOOL isCamera;
+@property (nonatomic, retain) UIImage *scanImage;
 @property (nonatomic, retain ) NSSet *readers;
 @property (nonatomic, assign) id<ZXingDelegate> delegate;
 @property (nonatomic, retain) NSURL *soundToPlay;
@@ -70,6 +72,6 @@
 @end
 
 @protocol ZXingDelegate
-- (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)result;
+- (void)zxingController:(ZXingWidgetController*)controller didScanResult:(id)parsedResult;
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller;
 @end

@@ -44,7 +44,7 @@
 
 
 + (NSString *)typeName {
-  return NSLocalizedString(@"SMSParsedResult type name", @"SMS");
+  return NSLocalizedString(@"SMS", @"SMSParsedResult type name");
 }
 
 - (UIImage *)icon {

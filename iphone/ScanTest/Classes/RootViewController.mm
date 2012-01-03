@@ -30,12 +30,16 @@
 - (IBAction)scanPressed:(id)sender {
 	
   ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
+  widController.isCamera = NO;
+  NSBundle *mainBundle = [NSBundle mainBundle];
+  NSString *path = [mainBundle pathForResource:@"test" ofType:@"png"];
+  UIImage *image = [UIImage imageWithContentsOfFile:path];
+  widController.scanImage = image;
   QRCodeReader* qrcodeReader = [[QRCodeReader alloc] init];
   NSSet *readers = [[NSSet alloc ] initWithObjects:qrcodeReader,nil];
   [qrcodeReader release];
   widController.readers = readers;
   [readers release];
-  NSBundle *mainBundle = [NSBundle mainBundle];
   widController.soundToPlay =
       [NSURL fileURLWithPath:[mainBundle pathForResource:@"beep-beep" ofType:@"aiff"] isDirectory:NO];
   [self presentModalViewController:widController animated:YES];

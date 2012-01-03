@@ -17,7 +17,7 @@
 #import "ZXingWidgetController.h"
 #import "Decoder.h"
 #import "NSString+HTML.h"
-#import "ResultParser.h"
+#import "UniversalResultParser.h"
 #import "ParsedResult.h"
 #import "ResultAction.h"
 #import "TwoDDecoderResult.h"
@@ -47,6 +47,7 @@
 @synthesize captureSession;
 @synthesize prevLayer;
 #endif
+@synthesize isCamera, scanImage;
 @synthesize result, delegate, soundToPlay;
 @synthesize overlayView;
 @synthesize oneDMode, showCancel, isStatusBarHidden;
@@ -82,6 +83,7 @@
 
   [soundToPlay release];
   [overlayView release];
+  [scanImage release];
   [readers release];
   [super dealloc];
 }
@@ -96,6 +98,13 @@
   if (delegate != nil) {
     [delegate zxingControllerDidCancel:self];
   }
+}
+- (void)scannedWithImage:(UIImage *)img size:(CGRect)rect{
+    Decoder *d = [[Decoder alloc] init];
+    d.readers = readers;
+    d.delegate = self;
+    decoding = [d decodeImage:img cropRect:rect] == YES ? NO : YES;
+    [d release];
 }
 
 - (NSString *)getPlatform {
@@ -134,10 +143,14 @@
 
   decoding = YES;
 
-  [self initCapture];
-  [self.view addSubview:overlayView];
-  
-  [overlayView setPoints:nil];
+  if (isCamera) {
+    [self initCapture];
+    [self.view addSubview:overlayView];
+    [overlayView setPoints:nil];
+  }
+  else {
+    [self scannedWithImage:self.scanImage size:CGRectMake(0, 0, self.scanImage.size.width, self.scanImage.size.height)];
+  }
   wasCancelled = NO;
 }
 
@@ -238,12 +251,14 @@
 }
 
 - (void)presentResultForString:(NSString *)resultString {
-  self.result = [ResultParser parsedResultForString:resultString];
+  self.result = [UniversalResultParser parsedResultForString:resultString];
   if (beepSound != (SystemSoundID)-1) {
     AudioServicesPlaySystemSound(beepSound);
+    //[result actions];
   }
 #ifdef DEBUG
   NSLog(@"result string = %@", resultString);
+  NSLog(@"result class = %@", [result class]);
 #endif
 }
 
@@ -260,14 +275,16 @@
   [self presentResultForString:[twoDResult text]];
   [self presentResultPoints:[twoDResult points] forImage:image usingSubset:subset];
   // now, in a selector, call the delegate to give this overlay time to show the points
-  [self performSelector:@selector(notifyDelegate:) withObject:[[twoDResult text] copy] afterDelay:0.0];
+    [self performSelector:@selector(notifyDelegate:)withObject:result afterDelay:0.0];
+  //[self performSelector:@selector(notifyDelegate:) withObject:[[twoDResult text] copy] afterDelay:0.0];
   decoder.delegate = nil;
 }
 
-- (void)notifyDelegate:(id)text {
+- (void)notifyDelegate:(id)parsedResult {
   if (!isStatusBarHidden) [[UIApplication sharedApplication] setStatusBarHidden:NO];
-  [delegate zxingController:self didScanResult:text];
-  [text release];
+  
+    [delegate zxingController:self didScanResult:parsedResult];
+  [parsedResult release];
 }
 
 - (void)decoder:(Decoder *)decoder failedToDecodeImage:(UIImage *)image usingSubset:(UIImage *)subset reason:(NSString *)reason {

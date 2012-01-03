@@ -39,11 +39,12 @@
 
 
 + (NSString *)typeName {
-  return NSLocalizedString(@"TelParsedResult type name", @"Tel");
+  return NSLocalizedString(@"Tel", @"TelParsedResult type name");
 }
 
 - (UIImage *)icon {
-  return [UIImage imageNamed:@"phone.png"];
+    return [super icon];
+    //return [UIImage imageNamed:@"phone.png"];
 }
 
 - (void)populateActions { 

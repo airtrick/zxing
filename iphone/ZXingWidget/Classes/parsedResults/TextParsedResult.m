@@ -35,7 +35,7 @@
 }
 
 + (NSString *)typeName {
-  return NSLocalizedString(@"TextParsedResult type name", @"Text");
+  return NSLocalizedString(@"Text", @"TextParsedResult type name");
 }
 
 - (UIImage *)icon {
